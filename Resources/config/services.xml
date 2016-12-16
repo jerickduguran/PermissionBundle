@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  
+	<parameters> 
+	   <parameter key="movent_permission.treebuilder.class">Movent\PermissionBundle\Security\TreeBuilder</parameter>
+	</parameters>
+	
+    <services>   
+		<service id="movent_permission.treebuilder" class="%movent_permission.treebuilder.class%"></service>
+		
+		<service id="movent_permission.maskbuilder.base" class="Movent\PermissionBundle\Security\MaskBuilder" public="false"></service>
+		
+        <service id="security.access.base_voter" class="Movent\PermissionBundle\Security\Authorization\Voter\BaseVoter" public="false">
+			<argument type="service" id="movent_permission.treebuilder"></argument>
+            <tag name="security.voter" />
+        </service>
+		
+        <service id="movent.security_context" class="Movent\PermissionBundle\Security\Core\SecurityContext" > 
+			<argument type="service" id="movent_permission.treebuilder"></argument>
+        </service>
+		
+    </services> 
+	
+</container>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Movent\PermissionBundle\Entity\Permission" table="mv__permission" repository-class="Movent\PermissionBundle\Entity\PermissionRepository" >
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="role" type="string" column="role" length="150"/>
+    <field name="permissions" type="text" column="permissions"/>
+    <field name="mask" type="integer" column="mask"/>
+  </entity>
+</doctrine-mapping>

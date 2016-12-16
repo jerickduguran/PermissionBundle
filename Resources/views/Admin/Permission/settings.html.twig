@@ -1,0 +1,109 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %} 
+ 
+ 
+{% block content %} 
+<style type="text/css">
+	.jstree-proton .jstree-wholerow-clicked{
+		background: transparent;
+	}
+</style>
+	<div class="box box-color box-bordered">
+		<div class="box-title">
+			<h3>
+				<i class="icon-table"></i> 
+			</h3> 
+		</div>
+		<div class="box-content"> 
+				<div class="span3">
+					<select class="select2">  
+						{{ admin.roleOptions|raw }}  
+					</select>
+				</div>
+				<div class="span4">
+					<div id="permissions"></div>
+					<br/>
+					<br/>
+					<input id="save" type="button" value="Save" class="btn btn-primary"/>
+				</div>
+				<div class="span5">
+				</div> 
+		</div>
+	</div> 
+	<script type="text/javascript"> 	
+
+		
+		var tree = $('#permissions').jstree({
+			'plugins': ["wholerow", "checkbox"],
+			'core': {
+				'data': [{
+						"text": "All Modules",
+						"children": [{ 
+							"id": '12345',	
+							"text": "Campaigns",
+							"state": { "selected": false }, 
+							"children" : [{ 
+												"text": "List",
+												"state": { "selected": true }, 
+												"attr" : {'data-id':'12'}
+										  },
+										  {
+											   "text": "Create", 
+										  },
+										  {
+												"text": "Edit", 
+										  },
+										  {
+												"text": "Delete",
+												"state": { "opened": true }, 
+										  },
+										  {
+												"text": "Download",
+												"state": { "opened": true }, 
+										  }]
+						},
+						{
+							"id": '3345',
+							"text": "Brands",
+							"state": { "selected": false }, 
+							"children" : [{ 
+												"text": "List",
+												"state": { "selected": true }, 
+										  },
+										  {
+											   "text": "Create", 
+										  },
+										  {
+												"text": "Edit", 
+										  },
+										  {
+												"text": "Delete",
+												"state": { "opened": true }, 
+										  }]
+						},
+						{
+							"text": "Messaging",
+							"state": { "selected": false }, 
+						}]
+					}],
+				'themes': {
+					'name': 'proton',
+					'responsive': true
+				},
+				'expand_selected_onload': false
+			}
+		});
+		
+		
+		$(document).ready(function(){ 
+		
+			$("#save").click(function(){
+			   $('#permissions').on("changed.jstree", function (e, data) {
+					console.log("The selected nodes are:");
+					console.log(data.selected);
+				  });
+			});
+			
+			
+		});
+	</script>
+{% endblock content %}

@@ -1,0 +1,12 @@
+services:
+    movent_permission.admin.permission:
+        class: Movent\PermissionBundle\Admin\PermissionAdmin
+        arguments: [~, Movent\PermissionBundle\Entity\Permission, MoventPermissionBundle:PermissionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Permission}
+
+    movent_permission.admin.role:
+        class: Movent\PermissionBundle\Admin\RoleAdmin
+        arguments: [~, Movent\PermissionBundle\Entity\Role, MoventPermissionBundle:\Admin\Role]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Role}

@@ -1,0 +1,112 @@
+<?php
+
+namespace Movent\PermissionBundle\Entity;
+
+/**
+ * Permission
+ */
+class Permission
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $role;
+
+    /**
+     * @var string
+     */
+    private $permissions;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return Permission
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set permissions
+     *
+     * @param string $permissions
+     *
+     * @return Permission
+     */
+    public function setPermissions($permissions)
+    {
+        $this->permissions = $permissions;
+    
+        return $this;
+    }
+
+    /**
+     * Get permissions
+     *
+     * @return string
+     */
+    public function getPermissions()
+    {
+        return $this->permissions;
+    }
+    /**
+     * @var integer
+     */
+    private $mask;
+
+
+    /**
+     * Set mask
+     *
+     * @param integer $mask
+     *
+     * @return Permission
+     */
+    public function setMask($mask)
+    {
+        $this->mask = $mask;
+    
+        return $this;
+    }
+
+    /**
+     * Get mask
+     *
+     * @return integer
+     */
+    public function getMask()
+    {
+        return $this->mask;
+    }
+}
